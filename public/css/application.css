@@ -1,0 +1,38 @@
+body {
+	background: #8EC1DA;
+}
+
+.container {
+  margin: 20px auto;
+  width: 500px;
+  padding: 20px 20px 20px 20px;
+}
+
+h1 {
+	margin-top: 100px;
+	text-align: center;
+	color: #FFF;
+	font-size: 100px;
+}
+
+input[type=submit] {
+	visibility: hidden;
+}
+
+textarea {
+	margin: 20px auto;
+	width: 475px;
+	height: 90px;
+	resize: none;
+	border-radius: 10px;
+	padding: 10px;
+	line-height: 30px;
+	font-size: 22px;
+	background: #C0DEED;
+	border: 0px;
+}
+
+textarea:focus {
+	outline: none;
+	background: #fff;
+}
