@@ -14,7 +14,9 @@ require 'pathname'
 require 'pg'
 require 'active_record'
 require 'logger'
+
 require 'twitter'
+require 'oauth'
 
 require 'sinatra'
 require "sinatra/reloader" if development?
@@ -35,4 +37,7 @@ require APP_ROOT.join('config', 'database')
 
 # Require Twitter tokens
 
-require_relative 'twitters'
+Twitter.configure do |config|
+  config.consumer_key = ENV['TWITTER_KEY']
+  config.consumer_secret = ENV['TWITTER_SECRET']
+end
