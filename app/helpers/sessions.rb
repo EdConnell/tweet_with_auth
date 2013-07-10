@@ -5,3 +5,4 @@ end
 def signed_in?
 	current_user
 end
+

@@ -15,13 +15,16 @@ require 'pg'
 require 'active_record'
 require 'logger'
 
-require 'twitter'
-require 'oauth'
+
+require 'sidekiq'
+require 'redis'
 
 require 'sinatra'
 require "sinatra/reloader" if development?
 
 require 'erb'
+require 'twitter'
+require 'oauth'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
@@ -40,4 +43,6 @@ require APP_ROOT.join('config', 'database')
 Twitter.configure do |config|
   config.consumer_key = ENV['TWITTER_KEY']
   config.consumer_secret = ENV['TWITTER_SECRET']
+  # config.consumer_key = 'zyhwLOZWzvv1UEyvCbmGA'
+  # config.consumer_secret = 'DGYjWwiQFgBlQpwcaPo2lkW3ocyoBBb0OUdk0UM8'
 end

@@ -1,0 +1,9 @@
+<div class="container">
+  <% if @tweets %>
+    <ul id="tweets">
+    <% @tweets.each do |tweet| %>
+      <li id="tweet"><%= tweet %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
