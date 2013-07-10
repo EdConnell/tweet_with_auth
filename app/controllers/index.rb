@@ -3,8 +3,7 @@ get '/' do
 end
 
 post '/tweet' do
-	user = Twitter::Client.new(oauth_token: session[:token], oauth_token_secret: session[:token_secret])
-  user.update(params[:tweet])
+	current_user.twitter_client.update(params[:tweet])
 end
 
 get '/sign_in' do
@@ -17,10 +16,11 @@ get '/sign_out' do
 end
 
 get '/oauth/callback' do
-	# need this in line below? oauth_token: params["oauth_token"]
 	access = session[:request_token].get_access_token(oauth_verifier: params["oauth_verifier"])
+	session[:request_token] = nil
 	tweeter = Tweeter.find_or_initialize_by_handle(access.params[:screen_name])
 	tweeter.update_attributes(token: access.token, token_secret: access.secret)
+	# tweeter.twitter_client.user[:profile_image_url].sub('normal', 'bigger')
 	session[:tweeter] = tweeter.handle
 	redirect '/'
 end
